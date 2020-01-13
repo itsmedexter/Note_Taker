@@ -12,39 +12,41 @@ module.exports = function(app) {
         res.json(journalData);
     });
 
-    app.post("/api/db", function(req, res) {
+// app.get("/api/journal/:journal", function(req, res) {
+//     return res.json(journalData);
+// });
 
-        if (dbData.length < 5) {
-            dbData.push(req.body);
-            res.json(true);
-          }
-          else {
-            journalData.push(req.body);
-            res.json(false);
-          }
-    });
+// // create new data, push new data to dbData and journalData
+//     app.post("/api/db/new", function(req, res) {
+//         var newdbdata = req.body;
+//         console.log(newdbdata);
+//         dbData.push(newdbdata);
+//         journalData.push(newdbdata);
+//         res.json(newdbdata);
+//     });
 
-    app.put("/api/clear", function(req, res) {
-        // Empty out the arrays of data
-        dbData.length = [];
-        journalData.length = [];
+
+
+//     app.put("/api/clear", function(req, res) {
+//         // Empty out the arrays of journal
+//         journalData.length = [];
     
-        res.json({ ok: true });
-      });
+//         res.json({ ok: true });
+//       });
 
 // request Id?
-var app = require('express')();
-var addRequestId = require('express-request-id')();
+// var app = require('express')();
+// var addRequestId = require('express-request-id')();
  
-app.use(addRequestId);
+// app.use(addRequestId);
  
-app.get('/', function (req, res, next) {
-    res.send(req.id);
-    next();
-});
+// app.get('/', function (req, res, next) {
+//     res.send(req.id);
+//     next();
+// });
  
-app.listen(9000, function() {
-    console.log('Listening on port %d', server.address().port);
-});
+// app.listen(9000, function() {
+//     console.log('Listening on port %d', server.address().port);
+// });
 
     };
