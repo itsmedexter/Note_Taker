@@ -1,16 +1,36 @@
 // linking routes
 var dbData = require("../data/db");
 var journalData = require("../data/journal");
+var fs = require('fs');
+
 
 module.exports = function(app) {
     // to db api
-    app.get("/api/db", function(req, res) {
+    app.post("/api/db", function(req, res) {
         res.json(dbData);
     });
-// to journal api
+
+    // to journal api
     app.get("/api/journal", function(req, res) {
-        res.json(journalData);
+    res.json(journalData);
     });
+
+// This is where I'm having trouble not reading or writing to file
+
+    // get fs read file
+    app.get('/api/db', function(request, response) {
+        readFile(request.query.url);
+      })
+
+    //  get fs save file
+     app.post('/api/db', function(request, response) {
+        saveFile(request.query.url, request.body.body);
+      });
+      
+      
+
+    
+
 
 // app.get("/api/journal/:journal", function(req, res) {
 //     return res.json(journalData);
