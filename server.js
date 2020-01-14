@@ -6,6 +6,7 @@ var PORT = process.env.PORT || 9000;
 // data parsing via Express
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+// this is to point to the directory where routes, html, css, index.js reside 
 app.use(express.static("public"));
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);

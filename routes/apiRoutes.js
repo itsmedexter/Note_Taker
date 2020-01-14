@@ -2,30 +2,63 @@
 var dbData = require("../data/db");
 var journalData = require("../data/journal");
 var fs = require('fs');
-
+var path = require('path');
 
 module.exports = function(app) {
-    // to db api
-    app.post("/api/db", function(req, res) {
-        res.json(dbData);
-    });
+  
+
+// get fs read file
+app.get('/api/db', function(request, response) {
+    fs.readFile(path.join(__dirname, '..', 'data', 'db.json'),'utf8', (err, data) => {
+        if (err) throw err;
+        response.json(JSON.parse(data));
+      });
+  })
+
+  app.delete('/api/db/:index', function(request, response) {
+    fs.readFile(path.join(__dirname, '..', 'data', 'db.json'),'utf8', (err, data) => {
+        if (err) throw err;
+        const newData = JSON.parse(data);
+        if (request.params.index >= newData.length) {
+            response.sendStatus(500);
+        }
+        newData.splice(request.params.index, 1);
+        fs.writeFile(path.join(__dirname, '..', 'data', 'db.json'),JSON.stringify(newData), (err) => {
+            if (err) throw err;
+            response.sendStatus(200);
+          });
+      });
+  })
+
+//  get fs save file
+ app.post('/api/db', function(request, response) {
+    fs.readFile(path.join(__dirname, '..', 'data', 'db.json'),'utf8', (err, data) => {
+        if (err) throw err;
+        var data = JSON.parse(data);
+        //Accept input from user and actually add it
+        data.push(request.body);
+        fs.writeFile(path.join(__dirname, '..', 'data', 'db.json'),JSON.stringify(data), (err) => {
+            if (err) throw err;
+            response.sendStatus(200);
+          });
+      });
+  });
+
+
+
+
+
+
+
+
 
     // to journal api
     app.get("/api/journal", function(req, res) {
     res.json(journalData);
     });
 
-// This is where I'm having trouble not reading or writing to file
 
-    // get fs read file
-    app.get('/api/db', function(request, response) {
-        readFile(request.query.url);
-      })
-
-    //  get fs save file
-     app.post('/api/db', function(request, response) {
-        saveFile(request.query.url, request.body.body);
-      });
+    
       
       
 

@@ -10,7 +10,7 @@ var activeNote = {};
 // A function for getting all notes from the journal
 var getNotes = function() {
   return $.ajax({
-    url: "/api/journal",
+    url: "/api/db",
     method: "GET"
   });
 };
@@ -25,9 +25,9 @@ var saveNote = function(note) {
 };
 
 // A function for deleting a note from the db
-var deleteNote = function(id) {
+var deleteNote = function(index) {
   return $.ajax({
-    url: "api/data/" + id,
+    url: "api/db/" + index,
     method: "DELETE"
   });
 };
@@ -35,8 +35,7 @@ var deleteNote = function(id) {
 // If there is an activeNote, display it, otherwise render empty inputs
 var renderActiveNote = function() {
   $saveNoteBtn.hide();
-
-  if (activeNote.id) {
+  if (activeNote.id !== undefined) {
     $noteTitle.attr("readonly", true);
     $noteText.attr("readonly", true);
     $noteTitle.val(activeNote.title);
@@ -110,7 +109,7 @@ var renderNoteList = function(notes) {
   var noteListItems = [];
 
   for (var i = 0; i < notes.length; i++) {
-    var note = notes[i];
+    var note = {...notes[i], id: i};
 
     var $li = $("<li class='list-group-item'>").data(note);
     var $span = $("<span>").text(note.title);
