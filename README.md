@@ -28,7 +28,7 @@ Any web browser can access or view Heroku link, repository. Use Command line or 
 ## Authors
 Dexter Valencia 
 
-- [Link to Portfolio Site](https://github.com/itsmedexter/unit11_Note-Taker)
+- [Link to Portfolio Site](https://github.com/itsmedexter/Note_Taker)
 - [Link to Github](https://github.com/itsmedexter)
 - [Link to LinkedIn](https://www.linkedin.com/in/dextervalencia/)
 
