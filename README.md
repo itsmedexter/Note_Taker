@@ -1,6 +1,6 @@
 # Note Taker
 
-Here is a Note Taker, created with Javascript, Node Js, Express. When run in the command line, the user starts at the landing page. When the "Get Started" buton is pressed, a new page appears and the user can make a new note with title, save, edit existing notes. Most of the app was built, my object was to make sure all the routes are working via back end using express.
+Here is a Note Taker, created with Javascript, Node Js, Express. When run in the command line, the user starts at the landing page. When the "Get Started" buton is pressed, a new page appears and the user can make a new note with title, save, edit existing notes. Most of the app was built, my object was to make sure all the routes are working via back end using Express.
 
 ## Take aways! 
 ![Getting Started](images/routes.jpg)
