@@ -4,7 +4,7 @@ Created with Javascript, Node Js, Express. When run in the command line, the use
 
 ## Take aways! 
 ![Getting Started](images/routes.jpg)
-1. After chatting with Mahisha and Kerwin about my troubles in linking the css and index.js scripts to the html pages. "app.use(express.static("public"));" OMG, this was the only thing needed and missing from my "server.js". You guys said all my routes were there, I just needed that line in my "server.js" to have the beginning route for all in the public folder. 
+1. After chatting with Mahisha and Kerwin about my troubles in linking the css and index.js scripts to the html pages. "app.use(express.static("public"));" OMG, this was the only thing needed and missing from my "server.js". You guys said all my routes were there, I just needed that line in "server.js" to have the beginning route for all in the public folder. 
  
 2. After chatting with Kerwin, I was wondering why the third "app.use" wasn't working correctly. I placed it after my "app.get("*"), which was in the second position. He mentioned that this should be placed last because it would take presidence and go back to the index file.
 
